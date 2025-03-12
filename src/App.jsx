@@ -1,12 +1,15 @@
 import Home from "./pages/Home"
 import GlobalStyle from "./styles/Globalstyles"
-
+import { ThemeProvider } from "./theme/ThemeProvider"
 function App() {
   return (
-   <>
-   <GlobalStyle/>
-   <Home/>
-   </>
+    <>
+      <ThemeProvider>
+        <GlobalStyle />
+        <Home />
+      </ThemeProvider>
+
+    </>
   )
 }
 export default App

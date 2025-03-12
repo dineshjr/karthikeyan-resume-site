@@ -1,9 +1,25 @@
-import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
-import profilePic from '../assets/stefan.png'
-
+import profilePic from '../assets/images/karthik_profile.png';
+// Import your resume file
+import resumePDF from '../assets/resume/resume.pdf'
 const AboutSection = () => {
+  // Function to handle resume download
+  const handleDownload = () => {
+    // Create an anchor element
+    const link = document.createElement('a');
+    // Set the href to your resume file
+    link.href = resumePDF;
+    // Set download attribute with filename
+    link.download = 'Karthik_Resume.pdf'; // You can customize the download filename
+    // Append to the document
+    document.body.appendChild(link);
+    // Trigger the click event
+    link.click();
+    // Clean up
+    document.body.removeChild(link);
+  };
+
   return (
     <AboutContainer>
       <ContentWrapper>
@@ -15,7 +31,7 @@ const AboutSection = () => {
           </Description>
           <ButtonContainer>
             <Button>Hire me</Button>
-            <Button>
+            <Button onClick={handleDownload}>
               Download CV <DownloadIcon>↓</DownloadIcon>
             </Button>
           </ButtonContainer>
@@ -37,8 +53,10 @@ const AboutContainer = styled.section`
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: #000000;
+  background: ${(props) => props.theme.background}; /* Themed Background */
+  color: ${(props) => props.theme.text}; /* Themed Text */
   padding: 0 5%;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 `;
 
 const ContentWrapper = styled.div`
@@ -48,7 +66,7 @@ const ContentWrapper = styled.div`
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
@@ -58,7 +76,7 @@ const ContentWrapper = styled.div`
 const TextContent = styled.div`
   flex: 1;
   padding-right: 40px;
-  
+
   @media (max-width: 768px) {
     padding-right: 0;
     margin-bottom: 40px;
@@ -69,9 +87,9 @@ const TextContent = styled.div`
 const AboutHeading = styled.h2`
   font-size: 3rem;
   font-weight: bold;
-  color: #ffffff;
+  color: ${(props) => props.theme.primary}; /* Themed Primary Color */
   margin-bottom: 10px;
-  
+
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
@@ -80,9 +98,9 @@ const AboutHeading = styled.h2`
 const Underline = styled.div`
   width: 60px;
   height: 4px;
-color: #FFC928;
+  background: ${(props) => props.theme.accent}; /* Themed Accent Color */
   margin-bottom: 20px;
-  
+
   @media (max-width: 768px) {
     margin: 0 auto 20px;
   }
@@ -90,10 +108,10 @@ color: #FFC928;
 
 const Description = styled.p`
   font-size: 1.1rem;
-  color: #ffffff;
+  color: ${(props) => props.theme.text}; /* Themed Text */
   margin-bottom: 30px;
   line-height: 1.6;
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
   }
@@ -102,45 +120,10 @@ const Description = styled.p`
 const ButtonContainer = styled.div`
   display: flex;
   gap: 15px;
-  
+
   @media (max-width: 768px) {
     justify-content: center;
     flex-wrap: wrap;
-  }
-`;
-
-const HireButton = styled.button`
-  background-color: #FFC928;
-  color: #000000;
-  border: none;
-  padding: 12px 25px;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background-color: #e5c100;
-  }
-`;
-
-const DownloadButton = styled.button`
-  background-color: transparent;
-  color: #ffffff;
-  border: 1px solid #333;
-  padding: 12px 25px;
-  font-size: 1rem;
-  font-weight: normal;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    border-color: #555;
-    color: #1c1c1c;
   }
 `;
 
@@ -154,46 +137,41 @@ const ImageSection = styled.div`
   min-height: 500px;
   display: flex;
   justify-content: center;
-  
+
   @media (max-width: 768px) {
     width: 100%;
     min-height: 400px;
   }
 `;
 
-
 const YellowBackground = styled.div`
   position: absolute;
-  width: 600px; /* Adjust width to fit image */
-  height: 550px; /* Adjust height to fit image */
-  background-color: #FFD700;
-  border-radius: 50%; /* Makes it a perfect circle */
-  bottom: -90px;
-  right: -60px; /* Move it slightly outside for better alignment */
-  z-index: 1;
-
-
+  width: 70%;
+  height: 70%;
+  background-color: ${(props) => props.theme.accent}; /* Themed Accent */
+  border-radius: 50%;
+  top: 100px;
+  right: -55px;
+  z-index: 0;
 
   @media (max-width: 768px) {
-    width: 200px;
-    height: 200px;
-    right: -30px;
+    width: 100%;
+    height: 100%;
+    right: 1%;
+    bottom: 10%;
   }
 `;
 
-
 const ProfileImage = styled.img`
-  position: relative; /* Ensures it stays above the background */
+  position: relative;
   height: 95%;
   width: auto;
   bottom: 0;
-  right: 0;
-  z-index: 1; /* Keep image on top */
+  right: -35px;
+  z-index: 1;
 
   @media (max-width: 768px) {
     height: 85%;
     right: 5%;
   }
 `;
-
-
