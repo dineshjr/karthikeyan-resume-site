@@ -103,6 +103,7 @@ const caseStudies = [
       description: "Banking Mobile App UX/UI",
       image: PayNow,
       tools: [Figma, Maze],
+      link: "https://www.behance.net/gallery/202671135/Pay-now-Banking-Mobile-App"
     },
     {
       id: 2,
@@ -110,6 +111,7 @@ const caseStudies = [
       description: "Listen to Music Together",
       image: Musicfy,
       tools: [Figma, Maze],
+      link: "https://www.behance.net/gallery/203743181/Musicify-Listen-music-together-Mobile-App"
     },
     {
       id: 3,
@@ -117,8 +119,9 @@ const caseStudies = [
       description: "Car Buying App UX/UI",
       image: Carz,
       tools: [Figma, Maze],
+      link: "https://www.behance.net/gallery/204773289/Carz-cars-selling-Application"
     },
-  ];
+];
 
   const designTools = [
     { icon: Figma, name: "Figma", progress: 90 },

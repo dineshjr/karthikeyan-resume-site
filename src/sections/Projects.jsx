@@ -1,4 +1,3 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -182,7 +181,10 @@ const CaseStudySlider = () => {
                     <img key={index} src={tool} alt="tool icon" />
                   ))}
                 </div>
+                <a  href={study.link} >
                 <button className="cta">View Project</button>
+
+                </a>
               </CardContent>
             </Card>
           </SwiperSlide>

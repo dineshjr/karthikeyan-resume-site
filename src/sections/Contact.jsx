@@ -35,7 +35,7 @@ const ContactSection = () => {
         </BehanceLink>
       </IconsContainer>
 
-      <FooterText>Karthikeyan Ravichandran 2025</FooterText>
+      <FooterText>Karthikeyan Ravichandran {new Date().getFullYear()}</FooterText>
     </Section>
   );
 };
@@ -46,11 +46,21 @@ const Section = styled.div`
   color: white;
   text-align: center;
   padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 const Title = styled.h2`
   font-size: 28px;
   font-weight: bold;
+  
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 
 const Underline = styled.div`
@@ -60,18 +70,24 @@ const Underline = styled.div`
   margin: 8px auto 20px;
 `;
 
-const Form = styled.div`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  max-width: 400px;
+  width: 100%;
+  max-width: 500px;
   margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    max-width: 90%;
+  }
 `;
 
 const Label = styled.label`
   align-self: flex-start;
   font-size: 14px;
+  width: 100%;
 `;
 
 const Input = styled.input`
@@ -81,43 +97,78 @@ const Input = styled.input`
   border: none;
   background: #222;
   color: white;
+  box-sizing: border-box;
 `;
 
 const TextArea = styled.textarea`
   width: 100%;
-  height: 80px;
+  height: 120px;
   padding: 10px;
   border-radius: 5px;
   border: none;
   background: #222;
   color: white;
+  box-sizing: border-box;
+  resize: vertical;
+  
+  @media (max-width: 480px) {
+    height: 100px;
+  }
 `;
 
 const SendButton = styled.button`
   background-color: gold;
   color: black;
-  padding: 10px 20px;
+  padding: 12px 30px;
   border: none;
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  margin-top: 10px;
+  
   &:hover {
     background-color: #ffcc00;
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 480px) {
+    padding: 10px 25px;
+    width: 100%;
   }
 `;
 
 const IconsContainer = styled.div`
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 25px;
+  flex-wrap: wrap;
+  
+  @media (max-width: 480px) {
+    gap: 20px;
+  }
 `;
 
 // Base IconLink style with shared properties
 const IconLink = styled.a`
-  font-size: 24px;
+  font-size: 28px;
   transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 22px;
+  }
 `;
 
 // Brand-specific icon styling with original colors
@@ -126,6 +177,7 @@ const LinkedInLink = styled(IconLink)`
   &:hover {
     color: #0077B5;
     opacity: 0.8;
+    transform: scale(1.1);
   }
 `;
 
@@ -134,6 +186,7 @@ const InstagramLink = styled(IconLink)`
   &:hover {
     color: #E1306C;
     opacity: 0.8;
+    transform: scale(1.1);
   }
 `;
 
@@ -142,6 +195,7 @@ const EmailLink = styled(IconLink)`
   &:hover {
     color: #D44638;
     opacity: 0.8;
+    transform: scale(1.1);
   }
 `;
 
@@ -150,12 +204,17 @@ const BehanceLink = styled(IconLink)`
   &:hover {
     color: #1769FF;
     opacity: 0.8;
+    transform: scale(1.1);
   }
 `;
 
 const FooterText = styled.p`
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 14px;
+  
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 export default ContactSection;
