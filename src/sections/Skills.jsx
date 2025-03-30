@@ -19,7 +19,7 @@ const SkillsSection = () => {
   return (
     <SkillsContainer>
       <Title>Skills</Title>
-      
+
       {/* Desktop and Tablet Layout (two columns) */}
       <DesktopLayout>
         <SkillsColumn>
@@ -44,7 +44,7 @@ const SkillsSection = () => {
           ))}
         </SkillsColumn>
       </DesktopLayout>
-      
+
       {/* Mobile Layout (single column) */}
       <MobileLayout>
         {allSkills.map((skill, index) => (
@@ -68,11 +68,11 @@ const SkillsContainer = styled.div`
   padding: 50px 20px;
   background: ${(props) => props.theme.background};
   color: ${(props) => props.theme.text};
-  
+
   @media (max-width: 768px) {
     padding: 40px 15px;
   }
-  
+
   @media (max-width: 480px) {
     padding: 30px 10px;
   }
@@ -95,12 +95,12 @@ const Title = styled.h2`
     transform: translateX(-50%);
     bottom: 0;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 25px;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.8rem;
     margin-bottom: 20px;
@@ -110,14 +110,13 @@ const Title = styled.h2`
 // Desktop and Tablet Layout Components
 const DesktopLayout = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 30px;
-  
+
   @media (max-width: 992px) {
     gap: 20px;
   }
-  
+
   @media (max-width: 768px) {
     display: none; /* Hide on mobile */
   }
@@ -131,7 +130,7 @@ const MobileLayout = styled.div`
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  
+
   @media (max-width: 768px) {
     display: flex; /* Show on mobile */
   }
@@ -142,7 +141,7 @@ const SkillsColumn = styled.div`
   flex-direction: column;
   gap: 15px;
   width: 320px;
-  
+
   @media (max-width: 992px) {
     width: 280px;
   }
@@ -163,7 +162,7 @@ const SkillCard = styled.div`
   border-radius: 10px;
   text-align: left;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-  
+
   @media (max-width: 480px) {
     padding: 12px 15px;
   }
@@ -172,7 +171,7 @@ const SkillCard = styled.div`
 const SkillName = styled.p`
   font-size: 1rem;
   margin-bottom: 8px;
-  
+
   @media (max-width: 480px) {
     font-size: 0.9rem;
     margin-bottom: 6px;
@@ -184,7 +183,7 @@ const ProgressBar = styled.div`
   height: 10px;
   border-radius: 5px;
   overflow: hidden;
-  
+
   @media (max-width: 480px) {
     height: 8px;
   }
