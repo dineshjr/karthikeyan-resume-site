@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react/prop-types */
+import  { useState, useEffect } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
