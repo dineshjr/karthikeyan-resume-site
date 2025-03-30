@@ -16,34 +16,38 @@ const Education = ({ isActive = true, onActivate }) => {
   }, [isActive, onActivate]);
 
   return (
-    <ExperienceContainer id="experience" className={active ? 'active' : 'inactive'}>
+    <ExperienceContainer id="education" className={active ? 'active' : 'inactive'}>
       <SectionTitle>Education</SectionTitle>
       <VerticalTimeline>
         {education.map((edu, index) => (
           <VerticalTimelineElement
             key={index}
             date={edu.date}
+            dateClassName="timeline-date" // Add a class for date styling
             icon={
               <IconWrapper>
-                <img src={edu.logo} alt={edu.company} style={{ background: "#fff" }} />
-
+                <img src={edu.logo} alt={edu.company} />
               </IconWrapper>
-
             }
-            iconStyle={{ background: theme.iconBg, boxShadow: `0 0 10px ${theme.accent}` }}
+            iconStyle={{ 
+              background: "#ffffff", 
+              boxShadow: `0 0 10px ${theme.accent || "#FF5722"}` 
+            }}
             contentStyle={{
-              background: "rgba(255, 255, 255, 0.1)",
+              background: theme.cardBg || "rgba(25, 25, 25, 0.95)", // Darker background
               backdropFilter: "blur(10px)",
               borderRadius: "12px",
               boxShadow: `0 4px 10px rgba(0, 0, 0, 0.2)`,
               border: `1px solid rgba(255, 255, 255, 0.2)`,
+              color: theme.cardText || "#ffffff", // Ensuring text is visible
               transition: "all 0.3s ease-in-out",
             }}
-            contentArrowStyle={{ borderRight: `7px solid ${theme.cardBg}` }}
+            contentArrowStyle={{ 
+              borderRight: `7px solid ${theme.cardBg || "rgba(25, 25, 25, 0.95"}`
+            }}
           >
-            <TimelineCardContent theme={theme}>
+            <TimelineCardContent>
               <CompanyHeader>
-
                 <CompanyInfo>
                   <CompanyName>{edu.company}</CompanyName>
                   <CompanyRole>{edu.role}</CompanyRole>
@@ -66,19 +70,33 @@ export default Education;
 
 /* Styled Components */
 const ExperienceContainer = styled.div`
-  background: ${(props) => props.theme.background};
-  color: ${(props) => props.theme.text};
-  padding: 40px 0;
+  background: ${(props) => props.theme.background || "#f5f5f5"};
+  color: ${(props) => props.theme.text || "#333333"};
+  padding: 40px 20px; /* Added horizontal padding for mobile */
   position: relative;
   z-index: 10;
 
   /* Fix the Timeline Vertical Line */
   .vertical-timeline::before {
-    background: ${(props) => props.theme.timelineLine};
+    background: ${(props) => props.theme.timelineLine || "rgba(255, 255, 255, 0.2)"};
     transition: background 0.3s ease-in-out;
   }
+  
+  /* Fix for date color on all devices */
+  .timeline-date {
+    color: ${(props) => props.theme.dateText || "#ffffff"} !important;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Media query for responsive devices */
+  @media (max-width: 768px) {
+    .vertical-timeline-element-content {
+      background: ${(props) => props.theme.cardBg || "rgba(25, 25, 25, 0.95)"} !important;
+      color: ${(props) => props.theme.cardText || "#ffffff"} !important;
+    }
+  }
 `;
-
 
 const SectionTitle = styled.h1`
   text-align: center;
@@ -94,45 +112,28 @@ const SectionTitle = styled.h1`
     display: block;
     width: 100px;
     height: 4px;
-    background: ${(props) => props.theme.accent};
+    background: ${(props) => props.theme.accent || "#FF5722"};
     margin: 10px auto;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+    
+    &:after {
+      width: 80px;
+    }
   }
 `;
 
-
-
 /* Dynamic Card Styling */
 const TimelineCardContent = styled.div`
-  background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: ${(props) => props.theme.text};
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
-  padding: 1.8em;
+  color: ${(props) => props.theme.cardText || "#ffffff"}; /* Ensure text is visible */
   transition: all 0.3s ease-in-out;
   position: relative;
   overflow: hidden;
   
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      120deg,
-      rgba(255, 193, 7, 0.5),
-      rgba(255, 255, 255, 0.1)
-    );
-    opacity: 0.2;
-    transform: rotate(25deg);
+    transform: scale(1.02);
   }
 `;
 
@@ -142,40 +143,48 @@ const CompanyHeader = styled.div`
   margin-bottom: 15px;
 `;
 
-
-
-
 const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
+  background: #ffffff;
+  border-radius: 50%;
 
   img {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     object-fit: contain;
     border-radius: 50%;
   }
 `;
+
 const CompanyInfo = styled.div``;
 
 const CompanyName = styled.h3`
   margin: 0;
+  color: ${(props) => props.theme.cardText || "#ffffff"}; /* Ensure heading is visible */
 `;
 
 const CompanyRole = styled.h4`
   margin: 0;
   opacity: 0.8;
+  color: ${(props) => props.theme.cardText || "#ffffff"}; /* Ensure heading is visible */
 `;
 
 const ResponsibilitiesList = styled.ul`
   padding-left: 20px;
   margin-top: 20px;
+  color: ${(props) => props.theme.cardText || "#ffffff"}; /* Ensure list text is visible */
 `;
 
 const Responsibility = styled.li`
   margin-bottom: 8px;
   line-height: 1.5;
+  color: ${(props) => props.theme.cardText || "#ffffff"}; /* Ensure list items are visible */
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem; /* Slightly reduced size for mobile */
+  }
 `;
