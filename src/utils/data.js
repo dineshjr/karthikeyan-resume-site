@@ -10,6 +10,7 @@ import Musicfy from '../assets/images/Musicfy.png'
 import PayNow from '../assets/images/Pay_Now.png'
 import Maze from '../assets/images/simple-icons_maze.png'
 import vlc from '../assets/images/vl_creations.png'
+import thulirsoft from '../assets/images/thulirsoft.png'
 const experiences = [
     {
         company: 'Cubic Designz',
@@ -26,16 +27,13 @@ const experiences = [
     },
     {
         company: 'Khivraj',
-        role: 'Associate Hr Strategy',
+        role: 'Application Support',
         period: '2024 - Present',
         img:Khivraj,
         position: 'right',
         responsibilities: [
-            'Managed recruitment processes, including job posting, resume screening, and conducting initial interviews.',
-            'Handled employee onboarding and training to ensure smooth integration into company workflows.',
-            'Collaborated with department heads to address workforce planning and operational needs.',
-            'Facilitated employee engagement initiatives, boosting morale and productivity.',
-            'Maintained employee records and ensured compliance with HR policies and regulations.'
+            'My role also includes gathering user feedback, assisting with application updates, conducting system testing from the client’s standpoint, and ensuring user satisfaction by proactively resolving potential issues. Clear communication, problem-solving, and a customer-centric approach are key aspects of my daily tasks',
+            'Creating wireframes, and user flows and gathering feedback, and iterating on designs are essential parts of my workflow to ensure the final product enhances user satisfaction and achieves business goals.'
         ]
     },
     {
@@ -60,6 +58,19 @@ const experiences = [
             'Captured compelling visual content, ensuring precise attention to lighting, shadows, and framing.',
             'Executed advanced editing techniques, including color correction and video enhancements, to deliver high-quality assets.',
             'Collaborated with creative teams to align visual outputs with project goals, enhancing overall storytelling.'
+        ]
+    },
+    {
+        company: 'Thulir Software',
+        role: 'Freelancing Projects',
+        img: thulirsoft, // ✅ If placed in the public folder
+        period: '2024 - Present',
+        position: 'left',
+        responsibilities: [
+            'Passionate about crafting user-centric designs that enhance digital experiences. As a freelance UI/UX designer, I specialize in designing intuitive interfaces, conducting user research, and improving usability for web and mobile applications. ',
+            'My expertise includes wireframing, prototyping, and delivering visually compelling designs that align with brand identity and business goals.',
+            'Create wireframes, prototypes, and high-fidelity designs to enhance user engagement and product functionality.',
+            'Manage projects independently, ensuring timely delivery and client satisfaction.'
         ]
     }
 ];

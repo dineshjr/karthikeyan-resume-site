@@ -19,7 +19,8 @@ const SliderContainer = styled.div`
 
 const StyledSwiper = styled(Swiper)`
   width: 80%;
-  height: 550px;
+  height: auto;
+  min-height: 550px;
 
   .swiper-slide {
     display: flex;
@@ -40,9 +41,12 @@ const StyledSwiper = styled(Swiper)`
     width: 0 !important;
     height: 0 !important;
   }
+  
+  @media (max-width: 768px) {
+    width: 90%;
+    min-height: 450px;
+  }
 `;
-
-
 
 const ArrowButton = styled.div`
   width: 45px;
@@ -67,14 +71,27 @@ const ArrowButton = styled.div`
     color: black;
     font-size: 1.5rem;
   }
+  
+  @media (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+  }
 `;
 
 const PrevButton = styled(ArrowButton)`
   left: 5%;
+  
+  @media (max-width: 768px) {
+    left: 2%;
+  }
 `;
 
 const NextButton = styled(ArrowButton)`
   right: 5%;
+  
+  @media (max-width: 768px) {
+    right: 2%;
+  }
 `;
 
 const Card = styled.div`
@@ -84,14 +101,31 @@ const Card = styled.div`
   overflow: hidden;
   box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.2);
+  
+  @media (max-width: 1024px) {
+    width: 280px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 240px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 220px;
+  }
 `;
 
 const ImageContainer = styled.div`
   width: 100%;
-  height: 180px;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  position: relative;
   overflow: hidden;
 
   img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -106,23 +140,50 @@ const CardContent = styled.div`
     font-size: 1.5rem;
     display: flex;
     align-items: center;
+    
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 1.1rem;
+    }
   }
 
   p {
     font-size: 1rem;
     color: #aaa;
     margin-top: 5px;
+    
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.85rem;
+    }
   }
 
   .icons {
     display: flex;
     gap: 10px;
     margin-top: 10px;
+    flex-wrap: wrap;
   }
 
   .icons img {
     width: 32px;
     height: 32px;
+    
+    @media (max-width: 768px) {
+      width: 28px;
+      height: 28px;
+    }
+    
+    @media (max-width: 480px) {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   .cta {
@@ -135,10 +196,22 @@ const CardContent = styled.div`
     border-radius: 50px;
     width: 100%;
     text-align: center;
+    border: none;
+    
+    @media (max-width: 768px) {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 12px;
   }
 `;
-
-
 
 const CaseStudySlider = () => {
   return (
@@ -168,7 +241,7 @@ const CaseStudySlider = () => {
         modules={[EffectCoverflow, Pagination, Navigation]}
       >
         {caseStudies.map((study) => (
-          <SwiperSlide key={study.id} style={{ width: "40dvh" }}>
+          <SwiperSlide key={study.id} style={{ width: "auto" }}>
             <Card>
               <ImageContainer>
                 <img src={study.image} alt={study.title} />
@@ -181,9 +254,8 @@ const CaseStudySlider = () => {
                     <img key={index} src={tool} alt="tool icon" />
                   ))}
                 </div>
-                <a  href={study.link} >
-                <button className="cta">View Project</button>
-
+                <a href={study.link} style={{ textDecoration: 'none', width: '100%' }}>
+                  <button className="cta">View Project</button>
                 </a>
               </CardContent>
             </Card>
